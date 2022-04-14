@@ -15,14 +15,6 @@ def findlyrics():
 
     songrequest = input("Enter songs to search for lyrics, else press enter")
     while songrequest != "":
-        if songrequest == "0.0":
-            # store lyrics in txt file
-            with open('selectedsongs.txt', 'w') as f:
-                for key, value in songrequest_dic.items():
-                    f.write(key + "\n")
-                    f.write(value)
-                    f.write('\n')
-            return songrequest_dic
         # search for the song using track name and artist name
         edited_songrequest = songrequest.lower()
         edited_songrequest = re.sub(" ", "-", edited_songrequest)
@@ -57,7 +49,14 @@ def findlyrics():
         # ending sequence
         songrequest = input(
             "Enter songs to search for lyrics, else press enter")
+           # store lyrics in txt file
+    with open('selectedsongs.txt', 'w') as f:
+        for key, value in songrequest_dic.items():
+            f.write(key + "\n")
+            f.write(value)
+            f.write('\n')
     print("Ended boo")
+    return songrequest_dic
 
 
 findlyrics()
