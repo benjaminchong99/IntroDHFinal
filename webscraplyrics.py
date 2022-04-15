@@ -34,11 +34,12 @@ def findlyrics():
         if results.__contains__("Sorry, we have no"):
             print("error")
             break
-
-        initialgrab = re.findall(">[\w\s,!']+", results)
+        initialgrab = re.findall(">[\w\s,!'â€~]+", results)
+        print("Initialgrab: ", initialgrab)
         finalgrab = []
         for clause in initialgrab:
-            clause = re.sub("[>\n]", "", clause)
+            clause = re.sub("[>\nâ€~]", "", clause)
+            print("Clause: ", clause)
             if clause != "":
                 finalgrab.append(clause)
         lyrics = ""
@@ -49,7 +50,7 @@ def findlyrics():
         # ending sequence
         songrequest = input(
             "Enter songs to search for lyrics, else press enter")
-           # store lyrics in txt file
+        # store lyrics in txt file
     with open('selectedsongs.txt', 'w') as f:
         for key, value in songrequest_dic.items():
             f.write(key + "\n")
