@@ -1,0 +1,50 @@
+0	Linkin Park	What I've Done
+1	Red Hot Chili Peppers	Can't Stop
+2	Green Day	Boulevard of Broken Dreams
+3	Muse	Hysteria
+4	System Of A Down	Chop Suey!
+5	The White Stripes	Seven Nation Army
+6	Nickelback	How You Remind Me
+7	The Killers	Mr. Brightside
+8	3 Doors Down	Kryptonite
+9	Fall Out Boy	Sugar, We're Goin Down
+10	Red Hot Chili Peppers	Dani California
+11	Paramore	Misery Business
+12	Green Day	Holiday
+13	Papa Roach	Last Resort
+14	Linkin Park	In the End
+15	blink-182	I Miss You
+16	My Chemical Romance	Teenagers
+17	Red Hot Chili Peppers	Californication
+18	The Offspring	You're Gonna Go Far, Kid
+19	System Of A Down	Toxicity
+20	Thirty Seconds To Mars	The Kill (Bury Me)
+21	Fall Out Boy	Dance, Dance
+22	Jimmy Eat World	The Middle
+23	Panic! At The Disco	I Write Sins Not Tragedies
+24	Limp Bizkit	Take A Look Around
+25	Evanescence	Bring Me To Life
+26	Rise Against	Savior
+27	Foo Fighters	Best of You
+28	Linkin Park	Numb
+29	Breaking Benjamin	The Diary of Jane - Single Version
+30	My Chemical Romance	Welcome to the Black Parade
+31	Franz Ferdinand	Take Me Out
+32	Three Days Grace	I Hate Everything About You
+33	Kings of Leon	Sex on Fire
+34	My Chemical Romance	I'm Not Okay (I Promise)
+35	Audioslave	Like a Stone
+36	The Killers	When You Were Young
+37	Foo Fighters	The Pretender
+38	Staind	It's Been Awhile
+39	The Red Jumpsuit Apparatus	Face Down
+40	Weezer	Island In The Sun
+41	Puddle Of Mudd	She Hates Me
+42	Muse	Uprising
+43	Coldplay	Yellow
+44	Alien Ant Farm	Smooth Criminal
+45	Green Day	American Idiot
+46	Good Charlotte	The Anthem
+47	Fall Out Boy	Thnks fr th Mmrs
+48	Hoobastank	The Reason
+49	Foo Fighters	All My Life
