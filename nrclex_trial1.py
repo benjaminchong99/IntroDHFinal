@@ -2,15 +2,15 @@
 from operator import length_hint
 import matplotlib.pyplot as plt
 import numpy as np
-import plotly.express as px
+#import plotly.express as px
 import pandas as pd
 import re
 # from nrclex import NRCLeximport as nltk
 # nltk.download('punkt')
 # nltk.download('wordnet')
-from textblob import TextBlob, Word, Blobber
+#from textblob import TextBlob, Word, Blobber
 
-from textblob import TextBlob
+#from textblob import TextBlob
 from collections import Counter
 from json import load
 
@@ -150,16 +150,12 @@ text_object = NRCLex(lexicon_file='nrc_en.json')
 # to read the songs
 with open("selectedsongs.txt", 'r') as f:
     lyrics = f.read()
-    datas = lyrics.split("\n\n")
+    datas = lyrics.split("__Title__")
     # print("Data: ", datas) # lyrics in text with \n
-    data = ".".join(datas)
-    datas = data.split("\n \n")
-    data = ".".join(datas)
-    datas = data.split(".")
-    data = datas
+    
 
 newdata = []
-for lines in data:
+for lines in datas:
     newline = lines.replace("\n", " ")
     newdata.append(newline)
 # print("New Data: ", newdata)  # filtered \n out

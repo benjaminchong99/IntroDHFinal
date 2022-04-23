@@ -9,7 +9,6 @@ from bs4 import BeautifulSoup
 # results = soup.find(id="songLyricsDiv")
 # print(results)
 
-
 def findlyrics(dictionary):
     songrequest_dic = {}
     for key, value in dictionary.items():
@@ -49,31 +48,8 @@ def findlyrics(dictionary):
                 lyrics += line + "\n "
             if lyrics != "":
                 songrequest_dic[f"{edited_songrequest} by {edited_artist}"] = lyrics
-            finalgrab = []
-            for clause in initialgrab:
-                clause = re.sub("[>\nâ€~]", "", clause)
-                print("Clause: ", clause)
-                if clause != "":
-                    finalgrab.append(clause)
-            lyrics = ""
-            for line in finalgrab:
-                lyrics += line + "\n "
-            if lyrics != "":
-                songrequest_dic[f"{edited_songrequest} by {edited_artist}"] = lyrics
 
-        # ending sequence
-    # store lyrics in txt file
-    with open('selectedsongsrock.txt', 'w') as f:
-        indexing = 0
-        for key, value in songrequest_dic.items():
-            key = re.sub("-", " ", key)
-            f.write(f"__Title__" + key.title() + "__Title__\n")
-            f.write('\n')
-            f.write(value)
-            f.write('\n')
-            indexing += 1
-    print("INDEX: ", indexing)
-    return songrequest_dic
+
 
 
 with open("rock.txt", 'r') as f:
@@ -92,28 +68,4 @@ with open("rock.txt", 'r') as f:
             print("skip this song")
 
 print(dict)
-# dictionary = {"paramore": "misery business",
-#               "My Chemical Romance": "Helena",
-#               "My Chemical romance": "I'm not okay",
-#               "Blink 182": "I miss you",
-#               "The Red JumpSuit Apparatus": "Face Down",
-#               "Fall out Boy": "Thnks fr th Mmrs",
-#               "Good charlotte": "the anthem",
-#               "Linkin Park": "numb",
-#               "YellowCard": "Ocean Avenue",
-#               "Mayday parade": "Miserable at best",
-#               "Sleeping with sirens": "If you can't hang",
-#               "blink 182": "First Date",
-#               "Sum41": "In too deep",
-#               "bring me the horizon": "throne",
-#               "Bullet For my valentine": "Tears Don't Fall",
-#               "Mayday Parade": "Jamie All Over",
-#               "my Chemical Romance": "Welcome to the Black Parade",
-#               "Pierce the Veil": "King for a day",
-#               "All Time Low": "Therapy",
-#               "Simple Plan": "Perfect",
-#               "We the Kings": "Skyway Avenue",
-#               "The Killers": "Mr Brightside"
-#               }
-
 findlyrics(dict)
