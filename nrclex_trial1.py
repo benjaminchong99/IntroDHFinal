@@ -24,7 +24,7 @@ def __build_word_affect__(self):
         affect_frequencies
     '''
     affect_list = []
-    affect_dict = dict()
+    affect_dict = {}
     affect_frequencies = Counter()
     lexicon_keys = self.__lexicon__.keys()
     for word in self.words:
@@ -138,7 +138,7 @@ def makeRadarGraph(key, values):
         else:
             label.set_horizontalalignment('right')
     plt.title(key, size=20)
-    plt.legend(["lyrics", ""])
+    # plt.legend(["lyrics", ""])
     plt.show()
 
 
@@ -148,47 +148,56 @@ text_object = NRCLex(lexicon_file='nrc_en.json')
 
 
 # to read the songs
-with open("selectedsongsrock.txt",'r') as f:
-  lyrics=f.read()
-  datas=lyrics.split("__Title__")
-  
-print(datas)
-newdata=[]
+with open("selectedsongsindie.txt", 'r') as f:
+    lyrics = f.read()
+    datas = lyrics.split("__Title__")
+
+# print(datas)
+newdata = []
 for lines in datas:
-  newline=lines.replace("\n"," ")
-  if(lines!=''):
-    newdata.append(newline)
-print(newdata)
-rows_list=[]
-title_list=[]
+    newline = lines.replace("\n", " ")
+    if(lines != ''):
+        newdata.append(newline)
+# print(newdata)
+rows_list = []
+title_list = []
 for num in range(len(newdata)):
-  if(num%2==0):
-    if(newdata[num]!=''):
-      title_list.append(newdata[num])
-  else:
-    text_object = NRCLex(lexicon_file='nrc_en.json')
-    text_object.load_raw_text(newdata[num])
-    res=text_object.affect_frequencies
-    #res['total emotion score']=sum(text_object.raw_emotion_scores.values())
-    #res['no.of words']=len(text_object.words)
-    rows_list.append(res)
+    if(num % 2 == 0):
+        if(newdata[num] != ''):
+            title_list.append(newdata[num])
+    else:
+        text_object = NRCLex(lexicon_file='nrc_en.json')
+        text_object.load_raw_text(newdata[num])
+        res = text_object.affect_frequencies
+        #res['total emotion score']=sum(text_object.raw_emotion_scores.values())
+        #res['no.of words']=len(text_object.words)
+        rows_list.append(res)
 
-#print(title_list)
-#print(len(title_list))
-
-df=pd.DataFrame(rows_list,index=title_list)
-
-#print(df)
-
-
-# the 10 emotions selected
+# print(title_list)
+# print(len(title_list))
 header = ["anger", "disgust", "fear", "negative", "sadness",
           "anticipation", "positive", "trust", "surprise", "joy"]
+
+df = pd.DataFrame(rows_list, index=title_list, columns=header)
+
+# print(df)
+# the 10 emotions selected
+# print(display(df))
+column_average = {}
+for emotion in header:
+    column_average[emotion] = (df[emotion].mean())
+
+print(column_average)
+
+'''
 # iloc is the [row][col]
 dictionary = {}
 for rowindex in range(len(df.iloc[:])):
     dictionary[title_list[rowindex]] = df.iloc[rowindex][:].tolist()
+'''
 
-print("the dictionary: ", dictionary)
-for key, value in dictionary.items():
-    makeRadarGraph(key, value)  # function call
+# print("the dictionary: ", dictionary)
+consolidatedlist = []
+for key, value in column_average.items():
+    consolidatedlist.append(value)
+makeRadarGraph("Indie", consolidatedlist)  # function call

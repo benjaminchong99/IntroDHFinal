@@ -19,7 +19,7 @@ def findlyrics(dictionary):
         # search for the song using track name and artist name
         edited_songrequest = songrequest.lower()
         edited_songrequest = re.sub(" ", "-", edited_songrequest)
-        edited_songrequest=edited_songrequest.replace(".","")
+        edited_songrequest = edited_songrequest.replace(".", "")
         edited_artist = artist.lower()
         edited_artist = re.sub(" ", "-", edited_artist)
         print(edited_songrequest, edited_artist)
@@ -63,7 +63,7 @@ def findlyrics(dictionary):
 
         # ending sequence
     # store lyrics in txt file
-    with open('selectedsongsrock.txt', 'w') as f:
+    with open('selectedsongsindie.txt', 'w') as f:
         indexing = 0
         for key, value in songrequest_dic.items():
             key = re.sub("-", " ", key)
@@ -76,7 +76,9 @@ def findlyrics(dictionary):
     return songrequest_dic
 
 
-with open("rock.txt", 'r') as f:
+"""START OF CODE"""
+
+with open("indie2.txt", 'r') as f:
     titles = f.read()
     #titles = re.sub("\t", " ", titles)
     filter = titles.split("\n")
@@ -87,33 +89,10 @@ with open("rock.txt", 'r') as f:
         temp = wordtgt.split("\t")
         print(temp)
         try:
-            dict[temp[2]] = temp[1]
+            dict[temp[1]] = temp[0]
         except:
             print("skip this song")
 
 print(dict)
-# dictionary = {"paramore": "misery business",
-#               "My Chemical Romance": "Helena",
-#               "My Chemical romance": "I'm not okay",
-#               "Blink 182": "I miss you",
-#               "The Red JumpSuit Apparatus": "Face Down",
-#               "Fall out Boy": "Thnks fr th Mmrs",
-#               "Good charlotte": "the anthem",
-#               "Linkin Park": "numb",
-#               "YellowCard": "Ocean Avenue",
-#               "Mayday parade": "Miserable at best",
-#               "Sleeping with sirens": "If you can't hang",
-#               "blink 182": "First Date",
-#               "Sum41": "In too deep",
-#               "bring me the horizon": "throne",
-#               "Bullet For my valentine": "Tears Don't Fall",
-#               "Mayday Parade": "Jamie All Over",
-#               "my Chemical Romance": "Welcome to the Black Parade",
-#               "Pierce the Veil": "King for a day",
-#               "All Time Low": "Therapy",
-#               "Simple Plan": "Perfect",
-#               "We the Kings": "Skyway Avenue",
-#               "The Killers": "Mr Brightside"
-#               }
 
 findlyrics(dict)
