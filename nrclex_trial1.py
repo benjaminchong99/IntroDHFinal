@@ -8,9 +8,9 @@ import re
 # from nrclex import NRCLeximport as nltk
 # nltk.download('punkt')
 # nltk.download('wordnet')
-#from textblob import TextBlob, Word, Blobber
+from textblob import TextBlob, Word, Blobber
 
-#from textblob import TextBlob
+from textblob import TextBlob
 from collections import Counter
 from json import load
 
@@ -148,37 +148,38 @@ text_object = NRCLex(lexicon_file='nrc_en.json')
 
 
 # to read the songs
-with open("selectedsongs.txt", 'r') as f:
-    lyrics = f.read()
-    datas = lyrics.split("__Title__")
-    # print("Data: ", datas) # lyrics in text with \n
-    
-
-newdata = []
+with open("selectedsongsrock.txt",'r') as f:
+  lyrics=f.read()
+  datas=lyrics.split("__Title__")
+  
+print(datas)
+newdata=[]
 for lines in datas:
-    newline = lines.replace("\n", " ")
+  newline=lines.replace("\n"," ")
+  if(lines!=''):
     newdata.append(newline)
-# print("New Data: ", newdata)  # filtered \n out
-rows_list = []
-title_list = []
+print(newdata)
+rows_list=[]
+title_list=[]
 for num in range(len(newdata)):
-    # split even index into title_list
-    # split odd index to rows_list, which is the lyrics
-    if(num % 2 == 0):
-        if(newdata[num] != ''):
-            title_list.append(newdata[num])
-    else:
-        text_object.load_raw_text(newdata[num])
-        rows_list.append(text_object.affect_frequencies)
-# print(title_list) # title list
-print("Row list: ", rows_list)  # the different data of different songs
+  if(num%2==0):
+    if(newdata[num]!=''):
+      title_list.append(newdata[num])
+  else:
+    text_object = NRCLex(lexicon_file='nrc_en.json')
+    text_object.load_raw_text(newdata[num])
+    res=text_object.affect_frequencies
+    #res['total emotion score']=sum(text_object.raw_emotion_scores.values())
+    #res['no.of words']=len(text_object.words)
+    rows_list.append(res)
 
+#print(title_list)
+#print(len(title_list))
 
-"""RADAR GRAPH PLOTTING HERE"""
+df=pd.DataFrame(rows_list,index=title_list)
 
-df = pd.DataFrame(rows_list, index=title_list[:])
+#print(df)
 
-# print("DF HERE: ", df)
 
 # the 10 emotions selected
 header = ["anger", "disgust", "fear", "negative", "sadness",
