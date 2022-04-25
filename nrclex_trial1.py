@@ -148,7 +148,7 @@ text_object = NRCLex(lexicon_file='nrc_en.json')
 
 
 # to read the songs
-with open("selectedsongsindie.txt", 'r') as f:
+with open("selectedsongsrock.txt", 'r') as f:
     lyrics = f.read()
     datas = lyrics.split("__Title__")
 
